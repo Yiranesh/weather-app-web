@@ -1,42 +1,18 @@
-# 🌤 Weather App — Web Version
-**by Yiranesh** | Built with Flask + OpenWeatherMap API
+# Weather App
 
-A full-featured weather web app with current conditions, 5-day forecasts, and city comparisons.
+I originally built this as a terminal app, then converted it
+into a web app using Flask. It was a good way to learn how
+routing and APIs work in a real project.
 
----
+## What it does
+- Check current weather for any city
+- View a 5-day forecast
+- Compare weather between two cities
 
-## Features
-- 🌡️ **Current Weather** — temperature, humidity, wind, feels-like
-- 📅 **5-Day Forecast** — daily outlook with icons
-- ⚖️ **City Comparison** — side-by-side weather for two cities
+## Built with
+- Python + Flask
+- OpenWeatherMap API
+- HTML + CSS (Jinja2 templates)
 
-## Tech Stack
-- **Backend:** Python + Flask
-- **API:** OpenWeatherMap
-- **Frontend:** Jinja2 templates + CSS
-
----
-
-## Run Locally
-
-```bash
-# 1. Install dependencies
-pip install -r requirements.txt
-
-# 2. Run the app
-python app.py
-
-# 3. Open in browser
-http://127.0.0.1:5000
-```
-
-## Deploy to Render (Free)
-
-1. Push this folder to a GitHub repo
-2. Go to [render.com](https://render.com) → New Web Service
-3. Connect your repo and set:
-   - **Build Command:** `pip install -r requirements.txt`
-   - **Start Command:** `gunicorn app:app`
-4. Add Environment Variable:
-   - `API_KEY` → your OpenWeatherMap API key
-5. Click Deploy ✅
+## Live demo
+https://weather-app-web-dwud.onrender.com
