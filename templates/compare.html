@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Compare Cities{% endblock %}
+{% block content %}
+<div class="page">
+  <h2 class="page-title">Compare Cities</h2>
+  <p class="page-sub">Side-by-side weather for two cities</p>
+
+  <form method="POST" class="search-form">
+    <div class="compare-row">
+      <input type="text" name="city1" placeholder="First city..." required autocomplete="off"
+        value="{{ results.city1.city if results else '' }}"/>
+      <span class="vs-badge">VS</span>
+      <input type="text" name="city2" placeholder="Second city..." required autocomplete="off"
+        value="{{ results.city2.city if results else '' }}"/>
+    </div>
+    <button type="submit" class="compare-btn">Compare</button>
+  </form>
+
+  {% if error %}
+    <div class="alert">⚠️ {{ error }}</div>
+  {% endif %}
+
+  {% if results %}
+  <div class="compare-grid animate-in">
+    {% for city in [results.city1, results.city2] %}
+    <div class="compare-card">
+      <div class="compare-city-name">{{ city.city }}</div>
+      <div class="compare-country">{{ city.country }}</div>
+      <img src="https://openweathermap.org/img/wn/{{ city.icon }}@2x.png" class="compare-icon"/>
+      <div class="compare-temp">{{ city.temp }}<span class="unit">°C</span></div>
+      <div class="compare-condition">{{ city.emoji }} {{ city.condition }}</div>
+      <div class="compare-stats">
+        <div>💧 {{ city.humidity }}%</div>
+        <div>💨 {{ city.wind }} m/s</div>
+        <div>🌡️ Feels {{ city.feels_like }}°C</div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="warmer-banner animate-in">
+    🏆 {{ results.warmer }}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="hero">
+  <div class="hero-badge">🌍 Live Weather Data</div>
+  <h1 class="hero-title">Know Your<br/><span class="accent">Weather</span></h1>
+  <p class="hero-sub">Real-time forecasts, city comparisons, and 5-day outlooks — all in one place.</p>
+  <div class="hero-cards">
+    <a href="/current" class="hero-card">
+      <span class="hero-card-icon">🌡️</span>
+      <span class="hero-card-title">Current Weather</span>
+      <span class="hero-card-desc">Temperature, humidity, wind & conditions right now</span>
+    </a>
+    <a href="/forecast" class="hero-card">
+      <span class="hero-card-icon">📅</span>
+      <span class="hero-card-title">5-Day Forecast</span>
+      <span class="hero-card-desc">Plan ahead with a full week of weather outlook</span>
+    </a>
+    <a href="/compare" class="hero-card">
+      <span class="hero-card-icon">⚖️</span>
+      <span class="hero-card-title">Compare Cities</span>
+      <span class="hero-card-desc">Side-by-side weather comparison for two cities</span>
+    </a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{% block title %}Weather App{% endblock %} — by Yiranesh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+  <div class="bg-orbs">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+
+  <nav>
+    <a href="/" class="nav-brand">⛅ WeatherApp</a>
+    <div class="nav-links">
+      <a href="/current" class="{% if request.path == '/current' %}active{% endif %}">Current</a>
+      <a href="/forecast" class="{% if request.path == '/forecast' %}active{% endif %}">Forecast</a>
+      <a href="/compare" class="{% if request.path == '/compare' %}active{% endif %}">Compare</a>
+    </div>
+  </nav>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <p>Built by <strong>Yiranesh</strong> · Powered by OpenWeatherMap</p>
+  </footer>
+</body>
+</html>

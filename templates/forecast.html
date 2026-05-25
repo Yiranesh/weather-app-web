@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}5-Day Forecast{% endblock %}
+{% block content %}
+<div class="page">
+  <h2 class="page-title">5-Day Forecast</h2>
+  <p class="page-sub">See what's coming over the next five days</p>
+
+  <form method="POST" class="search-form">
+    <div class="search-row">
+      <input type="text" name="city" placeholder="e.g. Singapore, Paris, Sydney..." value="{{ city }}" required autocomplete="off"/>
+      <button type="submit">Search</button>
+    </div>
+  </form>
+
+  {% if error %}
+    <div class="alert">⚠️ {{ error }}</div>
+  {% endif %}
+
+  {% if forecast %}
+  <div class="forecast-grid animate-in">
+    {% for day in forecast %}
+    <div class="forecast-card" style="animation-delay: {{ loop.index0 * 0.1 }}s">
+      <div class="forecast-date">{{ day.date }}</div>
+      <img src="https://openweathermap.org/img/wn/{{ day.icon }}@2x.png" alt="{{ day.condition }}" class="forecast-icon"/>
+      <div class="forecast-temp">{{ day.temp }}°C</div>
+      <div class="forecast-condition">{{ day.emoji }} {{ day.condition }}</div>
+      <div class="forecast-humidity">💧 {{ day.humidity }}%</div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

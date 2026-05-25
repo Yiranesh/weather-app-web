@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Current Weather{% endblock %}
+{% block content %}
+<div class="page">
+  <h2 class="page-title">Current Weather</h2>
+  <p class="page-sub">Enter any city to get live weather conditions</p>
+
+  <form method="POST" class="search-form">
+    <div class="search-row">
+      <input type="text" name="city" placeholder="e.g. Kuala Lumpur, Tokyo, London..." required autocomplete="off"/>
+      <button type="submit">Search</button>
+    </div>
+  </form>
+
+  {% if error %}
+    <div class="alert">⚠️ {{ error }}</div>
+  {% endif %}
+
+  {% if weather %}
+  <div class="weather-card animate-in">
+    <div class="weather-header">
+      <div>
+        <div class="weather-city">{{ weather.city }}</div>
+        <div class="weather-country">{{ weather.country }}</div>
+      </div>
+      <div class="weather-icon-big">
+        <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="{{ weather.condition }}"/>
+      </div>
+    </div>
+    <div class="weather-temp">{{ weather.temp }}<span class="unit">°C</span></div>
+    <div class="weather-condition">{{ weather.emoji }} {{ weather.condition }}</div>
+    <div class="weather-stats">
+      <div class="stat">
+        <span class="stat-icon">🌡️</span>
+        <span class="stat-label">Feels Like</span>
+        <span class="stat-value">{{ weather.feels_like }}°C</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">💧</span>
+        <span class="stat-label">Humidity</span>
+        <span class="stat-value">{{ weather.humidity }}%</span>
+      </div>
+      <div class="stat">
+        <span class="stat-icon">💨</span>
+        <span class="stat-label">Wind Speed</span>
+        <span class="stat-value">{{ weather.wind }} m/s</span>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}
